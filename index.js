@@ -46,3 +46,53 @@ function addIntern() {
         })
     .then(data => createTeam())
 }
+
+function addManager() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the name of the manager?',
+            name: 'name',
+        },
+        {
+            type: 'number',
+            message: 'What is the id of the manager?',
+            name: 'id',
+        },
+        {
+            type: 'input',
+            message: 'What is the email of the manager?',
+            name: 'email',
+        },
+        {
+            type: 'number',
+            message: 'What is the office number of the manager?',
+            name: 'office',
+        },
+    ])
+    .then(data => {
+        employeeMembers.push(new Manager(data.name, data.id, data.email, data.office));
+        employeeIds.push(data.id)
+        console.log(`Manager ${data.name} successfully added!`)
+        })
+    .then(data => createTeam())
+}
+
+function createTeam() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            message: 'Which would you like to add?',
+            choices: ['Intern', 'Engineer', 'Finished adding'],
+            name: 'option',
+        }
+    ]).then(data => {
+        if (data.option === 'Intern') {
+            addIntern()
+        } else if (data.option === 'Engineer') {
+            addEngineer() 
+        } else {
+            buildTeam(employeeMembers)
+        }
+    })
+}
