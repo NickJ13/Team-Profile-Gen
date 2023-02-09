@@ -19,7 +19,9 @@ How to: first open index.js in integrated terminal. after you've done so, you mu
 
 ## Credits
 
-N/A
+tom: https://github.com/ogwalrus
+mekael: https://github.com/mekael18
+xavier: https://github.com/NyqEvo
 
 ## License
 
